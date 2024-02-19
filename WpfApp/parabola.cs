@@ -55,18 +55,17 @@ namespace WpfApp
                 i += 1;
             }
         }
-    }
         public void Read(string path)
         {
             using(StreamReader sr = new StreamReader(path))
             {
                 string s;
 
-                while((s = sr.ReadLine() != null)
+                while((s = sr.ReadLine() != null))
                 {
                     string[] subs = s.Split();
 
-                    if(!double.TryParse(double[0], out double X)
+                    if(!double.TryParse(double[0], out double X))
                     {
                         return;
                     }
