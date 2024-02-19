@@ -26,13 +26,20 @@ namespace WpfApp
 
         public Point_and_Velocity GetPosition(List<Point_and_Velocity> Points, Int32 i, double dt, double dy, double m, double k)
         {
-            double x = Points[i-1].x + dt*Points[i-1].Vx;
-            double y = Points[i-1].y + dt*Points[i-1].Vy;
+            double x = Points[i-1].x + dt * Points[i-1].Vx;
+            double y = Points[i-1].y + dt * Points[i-1].Vy;
 
-            double Vx = Points[i-1].Vx - k*dt*Points[i-1].Vx/m;
-            double Vy = Points[i-1].Vy - k*dt*Points[i-1].Vy/m;
+            double Vx = Points[i-1].Vx - k * dt * Points[i-1].Vx/m;
+            double Vy = Points[i-1].Vy - dt*(g + k * Points[i-1].Vy/m);
 
-            return new Point_and_Velosity
+            return new Point_and_Velocity(x, y, Vx, Vy);
+        }
+
+        public void calculation(double x0, double y0)
+        {
+            double t = 0;
+            double T = 2 * V0 * Math.sin(alpha) / g;
+
         }
     }
 
