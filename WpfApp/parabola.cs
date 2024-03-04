@@ -16,7 +16,7 @@ namespace WpfApp
         public List<Point_and_Velocity> Points = new List<Point_and_Velocity>;
         double splitting = 1;
 
-        public ParabolaFlight(double V0, double alpha, double weight, double splitting)
+        publiс ParabolaFlight(double V0, double alpha, double weight, double splitting)
         {
             this.V0 = V0;
             this.alpha = alpha;
@@ -88,6 +88,17 @@ namespace WpfApp
                     foreach(Point_and_Velocity p in Points)
                     {
                         await outputFile.WriteLineAsync($"{p.x}, {p.y}");
+                    }
+                }
+            }
+            public void CheckCollision(Obstacle obstacle)
+            {
+                foreach(Point_and_Velocity point in Points)
+                {
+                    if(obstacle.CheckCollision(point))
+                    {
+                        Сonsole.WriteLine("Столкновение!");
+                        break;
                     }
                 }
             }
